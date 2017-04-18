@@ -1,0 +1,420 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/maxogden/ndjson"
+
+    >ndjson (v1.5.0)</a>
+</h1>
+<h4>streaming newline delimited json parser + serializer</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ndjson">module ndjson</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.ndjson">
+            function <span class="apidocSignatureSpan"></span>ndjson
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.parse">
+            function <span class="apidocSignatureSpan">ndjson.</span>parse
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.serialize">
+            function <span class="apidocSignatureSpan">ndjson.</span>serialize
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.stringify">
+            function <span class="apidocSignatureSpan">ndjson.</span>stringify
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.toString">
+            function <span class="apidocSignatureSpan">ndjson.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ndjson.parse">module ndjson.parse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.parse.parse">
+            function <span class="apidocSignatureSpan">ndjson.</span>parse
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.parse.serialize">
+            function <span class="apidocSignatureSpan">ndjson.parse.</span>serialize
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ndjson.parse.stringify">
+            function <span class="apidocSignatureSpan">ndjson.parse.</span>stringify
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ndjson" id="apidoc.module.ndjson">module ndjson</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.ndjson" id="apidoc.element.ndjson.ndjson">
+        function <span class="apidocSignatureSpan"></span>ndjson
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(opts) {
+  opts = opts || {}
+  opts.strict = opts.strict !== false
+
+  function parseRow (row) {
+    try {
+      if (row) return JSON.parse(row)
+    } catch (e) {
+      if (opts.strict) {
+        this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
+      }
+    }
+  }
+
+  return split(parseRow, opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.parse" id="apidoc.element.ndjson.parse">
+        function <span class="apidocSignatureSpan">ndjson.</span>parse
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(opts) {
+  opts = opts || {}
+  opts.strict = opts.strict !== false
+
+  function parseRow (row) {
+    try {
+      if (row) return JSON.parse(row)
+    } catch (e) {
+      if (opts.strict) {
+        this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
+      }
+    }
+  }
+
+  return split(parseRow, opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function parse (opts) {
+opts = opts || {}
+opts.strict = opts.strict !== false
+
+function parseRow (row) {
+  try {
+    if (row) return JSON.<span class="apidocCodeKeywordSpan">parse</span>(row)
+  } catch (e) {
+    if (opts.strict) {
+      this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.serialize" id="apidoc.element.ndjson.serialize">
+        function <span class="apidocSignatureSpan">ndjson.</span>serialize
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(opts) {
+  return through.obj(opts, function(obj, enc, cb) {
+    cb(null, stringify(obj) + EOL)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+fs.createReadStream(&#x27;data.txt&#x27;)
+  .pipe(ndjson.parse())
+  .on(&#x27;data&#x27;, function(obj) {
+    // obj is a javascript object
+  })
+```
+
+#### ndjson.<span class="apidocCodeKeywordSpan">serialize</span>() / ndjson.stringify()
+
+returns a transform stream that accepts json objects and emits newline delimited json
+
+example usage:
+
+```js
+var serialize = ndjson.serialize()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.stringify" id="apidoc.element.ndjson.stringify">
+        function <span class="apidocSignatureSpan">ndjson.</span>stringify
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(opts) {
+  return through.obj(opts, function(obj, enc, cb) {
+    cb(null, stringify(obj) + EOL)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+fs.createReadStream(&#x27;data.txt&#x27;)
+  .pipe(ndjson.parse())
+  .on(&#x27;data&#x27;, function(obj) {
+    // obj is a javascript object
+  })
+```
+
+#### ndjson.serialize() / ndjson.<span class="apidocCodeKeywordSpan">stringify</span>()
+
+returns a transform stream that accepts json objects and emits newline delimited json
+
+example usage:
+
+```js
+var serialize = ndjson.serialize()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.toString" id="apidoc.element.ndjson.toString">
+        function <span class="apidocSignatureSpan">ndjson.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ndjson.parse" id="apidoc.module.ndjson.parse">module ndjson.parse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.parse.parse" id="apidoc.element.ndjson.parse.parse">
+        function <span class="apidocSignatureSpan">ndjson.</span>parse
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(opts) {
+  opts = opts || {}
+  opts.strict = opts.strict !== false
+
+  function parseRow (row) {
+    try {
+      if (row) return JSON.parse(row)
+    } catch (e) {
+      if (opts.strict) {
+        this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
+      }
+    }
+  }
+
+  return split(parseRow, opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function parse (opts) {
+opts = opts || {}
+opts.strict = opts.strict !== false
+
+function parseRow (row) {
+  try {
+    if (row) return JSON.<span class="apidocCodeKeywordSpan">parse</span>(row)
+  } catch (e) {
+    if (opts.strict) {
+      this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.parse.serialize" id="apidoc.element.ndjson.parse.serialize">
+        function <span class="apidocSignatureSpan">ndjson.parse.</span>serialize
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(opts) {
+  return through.obj(opts, function(obj, enc, cb) {
+    cb(null, stringify(obj) + EOL)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+fs.createReadStream(&#x27;data.txt&#x27;)
+  .pipe(ndjson.parse())
+  .on(&#x27;data&#x27;, function(obj) {
+    // obj is a javascript object
+  })
+```
+
+#### ndjson.<span class="apidocCodeKeywordSpan">serialize</span>() / ndjson.stringify()
+
+returns a transform stream that accepts json objects and emits newline delimited json
+
+example usage:
+
+```js
+var serialize = ndjson.serialize()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ndjson.parse.stringify" id="apidoc.element.ndjson.parse.stringify">
+        function <span class="apidocSignatureSpan">ndjson.parse.</span>stringify
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function serialize(opts) {
+  return through.obj(opts, function(obj, enc, cb) {
+    cb(null, stringify(obj) + EOL)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+fs.createReadStream(&#x27;data.txt&#x27;)
+  .pipe(ndjson.parse())
+  .on(&#x27;data&#x27;, function(obj) {
+    // obj is a javascript object
+  })
+```
+
+#### ndjson.serialize() / ndjson.<span class="apidocCodeKeywordSpan">stringify</span>()
+
+returns a transform stream that accepts json objects and emits newline delimited json
+
+example usage:
+
+```js
+var serialize = ndjson.serialize()
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
