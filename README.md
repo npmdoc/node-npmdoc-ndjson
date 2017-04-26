@@ -1,6 +1,6 @@
 # npmdoc-ndjson
 
-#### api documentation for  [ndjson (v1.5.0)](https://github.com/maxogden/ndjson)  [![npm package](https://img.shields.io/npm/v/npmdoc-ndjson.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ndjson) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ndjson.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ndjson)
+#### basic api documentation for  [ndjson (v1.5.0)](https://github.com/maxogden/ndjson)  [![npm package](https://img.shields.io/npm/v/npmdoc-ndjson.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ndjson) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ndjson.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ndjson)
 
 #### streaming newline delimited json parser + serializer
 
