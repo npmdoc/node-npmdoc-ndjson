@@ -97,15 +97,6 @@
 
         </li>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.ndjson.toString">
-            function <span class="apidocSignatureSpan">ndjson.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.ndjson.parse">module ndjson.parse</a><ol>
@@ -197,20 +188,17 @@
   return split(parseRow, opts)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function parse (opts) {
-opts = opts || {}
-opts.strict = opts.strict !== false
-
-function parseRow (row) {
-  try {
-    if (row) return JSON.<span class="apidocCodeKeywordSpan">parse</span>(row)
-  } catch (e) {
-    if (opts.strict) {
-      this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
-    }
-  }
+  console.error(&#x27;Usage: ndjson [input] &#x3c;options&#x3e;&#x27;)
+  process.exit(1)
 }
+
+if (first === &#x27;-&#x27;) inputStream = process.stdin
+else inputStream = fs.createReadStream(first)
+
+var parse = ndjson.<span class="apidocCodeKeywordSpan">parse</span>(args)
+var serializer = ndjson.serialize(args)
+
+inputStream.pipe(parse).pipe(serializer).pipe(process.stdout)
 ...</pre></li>
     </ul>
 
@@ -229,21 +217,16 @@ function parseRow (row) {
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-fs.createReadStream(&#x27;data.txt&#x27;)
-  .pipe(ndjson.parse())
-  .on(&#x27;data&#x27;, function(obj) {
-    // obj is a javascript object
-  })
-```
+  process.exit(1)
+}
 
-#### ndjson.<span class="apidocCodeKeywordSpan">serialize</span>() / ndjson.stringify()
+if (first === &#x27;-&#x27;) inputStream = process.stdin
+else inputStream = fs.createReadStream(first)
 
-returns a transform stream that accepts json objects and emits newline delimited json
+var parse = ndjson.parse(args)
+var serializer = ndjson.<span class="apidocCodeKeywordSpan">serialize</span>(args)
 
-example usage:
-
-```js
-var serialize = ndjson.serialize()
+inputStream.pipe(parse).pipe(serializer).pipe(process.stdout)
 ...</pre></li>
     </ul>
 
@@ -281,21 +264,6 @@ var serialize = ndjson.serialize()
     </ul>
 
 
-
-    <h2>
-        <a href="#apidoc.element.ndjson.toString" id="apidoc.element.ndjson.toString">
-        function <span class="apidocSignatureSpan">ndjson.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
 </div>
 
 <div class="apidocSectionDiv">
@@ -326,20 +294,17 @@ var serialize = ndjson.serialize()
   return split(parseRow, opts)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-
-function parse (opts) {
-opts = opts || {}
-opts.strict = opts.strict !== false
-
-function parseRow (row) {
-  try {
-    if (row) return JSON.<span class="apidocCodeKeywordSpan">parse</span>(row)
-  } catch (e) {
-    if (opts.strict) {
-      this.emit(&#x27;error&#x27;, new Error(&#x27;Could not parse row &#x27; + row.slice(0, 50) + &#x27;...&#x27;))
-    }
-  }
+  console.error(&#x27;Usage: ndjson [input] &#x3c;options&#x3e;&#x27;)
+  process.exit(1)
 }
+
+if (first === &#x27;-&#x27;) inputStream = process.stdin
+else inputStream = fs.createReadStream(first)
+
+var parse = ndjson.<span class="apidocCodeKeywordSpan">parse</span>(args)
+var serializer = ndjson.serialize(args)
+
+inputStream.pipe(parse).pipe(serializer).pipe(process.stdout)
 ...</pre></li>
     </ul>
 
@@ -358,21 +323,16 @@ function parseRow (row) {
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-fs.createReadStream(&#x27;data.txt&#x27;)
-  .pipe(ndjson.parse())
-  .on(&#x27;data&#x27;, function(obj) {
-    // obj is a javascript object
-  })
-```
+  process.exit(1)
+}
 
-#### ndjson.<span class="apidocCodeKeywordSpan">serialize</span>() / ndjson.stringify()
+if (first === &#x27;-&#x27;) inputStream = process.stdin
+else inputStream = fs.createReadStream(first)
 
-returns a transform stream that accepts json objects and emits newline delimited json
+var parse = ndjson.parse(args)
+var serializer = ndjson.<span class="apidocCodeKeywordSpan">serialize</span>(args)
 
-example usage:
-
-```js
-var serialize = ndjson.serialize()
+inputStream.pipe(parse).pipe(serializer).pipe(process.stdout)
 ...</pre></li>
     </ul>
 
